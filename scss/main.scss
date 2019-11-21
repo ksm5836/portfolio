@@ -1,0 +1,170 @@
+@import 'config';
+@import 'menu';
+* {
+    box-sizing: border-box;
+}
+
+body {
+    @include background;
+    background: $primary-color;
+    color: set-text-color($primary-color);
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+}
+
+// Headings
+h1,
+h2,
+h3 {
+    margin: 0;
+    font-weight: 400;
+    &.lg-heading {
+        font-size: 6rem;
+    }
+    &.sm-heading {
+        margin-bottom: 2rem;
+        padding: 0.2rem 1rem;
+        background: rgba(lighten($primary-color, 2), 0.5);
+    }
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+}
+
+.text-secondary {
+    color: $secondary-color;
+}
+
+main {
+    min-height: calc(100vh - 60px);
+    padding: 4rem;
+    .icons {
+        margin-top: 1rem;
+        a {
+            padding: 0.4rem;
+            &:hover {
+                color: $secondary-color;
+                @include easeOut();
+            }
+        }
+    }
+    &#home {
+        overflow: hidden;
+        h1 {
+            margin-top: 20vh;
+        }
+    }
+}
+
+.about-info {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-areas: 'bioimage bio bio''contact contact contact';
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.bio-image {
+    grid-area: bioimage;
+    background: url('../img/portrait.jpg');
+    background-size: cover;
+    background-position: 50% 50%;
+    transform: rotate(-90deg);
+    margin: auto;
+    border-radius: 50%;
+    border: $secondary-color 3px solid;
+    width: 200px;
+    height: 200px;
+}
+
+.bio {
+    grid-area: bio;
+}
+
+.boxes {
+    grid-area: contact;
+}
+
+// Work/Projects
+.projects {
+    display: grid;
+    grid-gap: 0.7rem;
+    grid-template-columns: repeat(3, 1fr);
+    img,
+    video {
+        width: 100%;
+        border: 3px #fff solid;
+        &:hover {
+            opacity: 0.5;
+            border-color: $secondary-color;
+            @include easeOut;
+        }
+    }
+    video {
+        min-height: 200px;
+    }
+}
+
+// Contack Page
+.boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 1rem;
+    div {
+        font-size: 2rem;
+        border: 3px #fff solid;
+        padding: 1rem 2rem;
+        margin-bottom: 3rem;
+        @include easeOut;
+        &:hover {
+            background: $secondary-color;
+            color: set-text-color($secondary-color);
+            span {
+                color: set-text-color($secondary-color);
+            }
+        }
+    }
+}
+
+// Button Styles
+// .btn {
+//     display: block;
+//     padding: 0.5rem 1rem;
+//     border: 0;
+//     margin-bottom: 0.3rem;
+//     &:hover {
+//         background: $secondary-color;
+//         color: set-text-color($secondary-color);
+//     }
+// }
+// .btn-dark {
+//     @extend .btn;
+//     background: darken($primary-color, 50);
+//     color: #fff;
+// }
+// .btn-light {
+//     @extend .btn;
+//     background: lighten($primary-color, 50);
+//     color: #333;
+// }
+#main-footer {
+    bottom: 0;
+    text-align: center;
+    padding: 1rem;
+    background: darken($primary-color, 10);
+    color: set-text-color($primary-color);
+    height: 60px;
+}
+
+@import 'mobile';
